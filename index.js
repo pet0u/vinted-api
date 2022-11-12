@@ -130,6 +130,7 @@ const search = (url, disableOrder = false, allowSwap = false, customParams = {})
     
     });
 }
+console.log("coucou")
 
 module.exports = {
     fetchCookie,
