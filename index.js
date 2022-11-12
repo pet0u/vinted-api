@@ -17,9 +17,9 @@ const fetchCookie = (domain = 'fr') => {
             }
         }).then((res) => {
             const sessionCookie = res.headers.get('set-cookie');
-            console.log(sessionCookie)
             controller.abort();
             resolve(cookie.parse(sessionCookie)['secure, _vinted_fr_session']);
+            console.log(resolve(cookie.parse(sessionCookie)['secure, _vinted_fr_session']))
         }).catch(() => {
             controller.abort();
             reject();
