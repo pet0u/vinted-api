@@ -17,6 +17,7 @@ const fetchCookie = (domain = 'fr') => {
             }
         }).then((res) => {
             const sessionCookie = res.headers.get('set-cookie');
+            console.log(sessionCookie)
             controller.abort();
             resolve(cookie.parse(sessionCookie)['secure, _vinted_fr_session']);
         }).catch(() => {
@@ -93,7 +94,6 @@ const search = (url, disableOrder = false, allowSwap = false, customParams = {})
         }
 
         const cachedCookie = cookies.get(domain);
-        console.log(cachedCookie)
         const cookie = cachedCookie && cachedCookie.createdAt > Date.now() - 60_000 ? cachedCookie.cookie : await fetchCookie(domain).catch(() => {});
         if (!cookie) {
             return reject('Could not fetch cookie');
