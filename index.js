@@ -6,7 +6,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 /**
  * Fetches a new public cookie from Vinted.fr
  */
-const fetchCookie = (domain = 'fr') => {
+const fetchCookie = (domain = 'be') => {
     return new Promise((resolve, reject) => {
         const controller = new AbortController();
         fetch(`https://vinted.${domain}`, {
@@ -106,7 +106,7 @@ const search = (url, disableOrder = false, allowSwap = false, customParams = {})
         }
 
         const controller = new AbortController();
-        fetch(`https://www.vinted.com/api/v2/catalog/items?${querystring}`, {
+        fetch(`https://www.vinted.be/api/v2/catalog/items?${querystring}`, {
             signal: controller.signal,
             agent: process.env.VINTED_API_HTTPS_PROXY ? new HttpsProxyAgent(process.env.VINTED_API_HTTPS_PROXY) : undefined,
             headers: {
