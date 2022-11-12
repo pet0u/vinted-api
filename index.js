@@ -6,7 +6,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 /**
  * Fetches a new public cookie from Vinted.fr
  */
-const fetchCookie = (domain = 'fr') => {
+const fetchCookie = (domain = 'be') => {
     return new Promise((resolve, reject) => {
         const controller = new AbortController();
         fetch(`https://vinted.${domain}`, {
