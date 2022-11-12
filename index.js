@@ -93,7 +93,6 @@ const search = (url, disableOrder = false, allowSwap = false, customParams = {})
         }
 
         const cachedCookie = cookies.get(domain);
-        console.log(cachedCookie.cookie)
         console.log(cachedCookie)
         const cookie = cachedCookie && cachedCookie.createdAt > Date.now() - 60_000 ? cachedCookie.cookie : await fetchCookie(domain).catch(() => {});
         if (!cookie) {
