@@ -79,7 +79,6 @@ const parseVintedURL = (url, disableOrder, allowSwap, customParams = {}) => {
 }
 
 const cookies = new Map();
-console.log(cookies)
 
 /**
  * Searches something on Vinted
@@ -96,6 +95,7 @@ const search = (url, disableOrder = false, allowSwap = false, customParams = {})
 
         const cachedCookie = cookies.get(domain);
         const cookie = cachedCookie && cachedCookie.createdAt > Date.now() - 60_000 ? cachedCookie.cookie : await fetchCookie(domain).catch(() => {});
+        console.log(cookie)
         if (!cookie) {
             return reject('Could not fetch cookie');
         }
