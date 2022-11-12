@@ -6,7 +6,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 /**
  * Fetches a new public cookie from Vinted.fr
  */
-const fetchCookie = (domain = 'be') => {
+const fetchCookie = (domain = 'fr') => {
     return new Promise((resolve, reject) => {
         const controller = new AbortController();
         fetch(`https://vinted.${domain}`, {
@@ -17,7 +17,6 @@ const fetchCookie = (domain = 'be') => {
             }
         }).then((res) => {
             const sessionCookie = res.headers.get('set-cookie');
-            console.log(res.headers)
             controller.abort();
             resolve(cookie.parse(sessionCookie)['secure, _vinted_fr_session']);
             console.log(resolve(cookie.parse(sessionCookie)['secure, _vinted_fr_session']))
@@ -80,6 +79,7 @@ const parseVintedURL = (url, disableOrder, allowSwap, customParams = {}) => {
 }
 
 const cookies = new Map();
+console.log(cookies)
 
 /**
  * Searches something on Vinted
